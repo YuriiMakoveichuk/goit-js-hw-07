@@ -11,15 +11,19 @@ const divElem = document.querySelector("#boxes");
 console.log(divElem);
 
 function createBoxes(amount) {
+  const divBoxes = [];
   let num = 30;
   for (let i = 0; i < amount; i++) {
-    num += 10;
-    function divTemplate() {
-      return `<div style="width:${num}px;height:${num}px;background-color:${getRandomHexColor()}; margin:20px"></div>`;
-    }
-    divElem.insertAdjacentHTML("beforeend", divTemplate());
+    const newNum = num + i * 10;
+
+    const div = `<div style="width:${newNum}px;height:${newNum}px;background-color:${getRandomHexColor()}; margin:20px"></div>`;
+
+    divBoxes.push(div);
   }
+  console.log(divBoxes);
+  divElem.insertAdjacentHTML("beforeend", divBoxes.join(""));
 }
+
 createBtn.addEventListener("click", handleCreateBoxes);
 function handleCreateBoxes() {
   divElem.innerHTML = "";
